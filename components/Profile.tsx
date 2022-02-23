@@ -98,7 +98,7 @@ export default function Profile({ id }: { id: string }) {
                 >
                   <Link
                     href={{
-                      pathname: '/editprofile',
+                      pathname: '/updateprofile',
                       query: { id: signedInUserData?.authenticatedItem?.id },
                     }}
                     passHref

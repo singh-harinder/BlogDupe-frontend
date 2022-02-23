@@ -13,9 +13,12 @@ import useForm from '../lib/useForm';
 import {
   useGetSinglePostQuery,
   useUpdatePostMutation,
+  useUserQuery,
 } from '../types/generated-queries';
 
 export default function UpdatePost({ id }: { id: string }) {
+  const { data } = useUserQuery();
+
   const {
     data: postQueryData,
     loading: postQueryLoading,
@@ -39,6 +42,14 @@ export default function UpdatePost({ id }: { id: string }) {
     },
   });
 
+  if (data?.authenticatedItem?.id !== postQueryData?.Post?.author?.id) {
+    return (
+      <Alert severity="error">
+        You do not have permission to edit this post
+      </Alert>
+    );
+  }
+
   if (postQueryLoading) return <CircularProgress />;
   if (postQueryError) {
     return <Alert severity="error">Error: {postQueryError.message}</Alert>;
@@ -51,7 +62,7 @@ export default function UpdatePost({ id }: { id: string }) {
   return (
     <Container>
       <Head>
-        <title>PlaceHolder | Edit Post</title>
+        <title>PlaceHolder | Update Post</title>
       </Head>
       <form
         onSubmit={async (event: FormEvent<HTMLFormElement>) => {
