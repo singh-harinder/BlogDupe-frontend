@@ -36,7 +36,12 @@ export default function PaginationComponent({ page }: { page: number }) {
           ← Prev
         </MaterialLink>
       </Link>
-      <Typography sx={{ padding: 5, fontSize: 20 }}>
+      <Typography
+        sx={{
+          padding: 1,
+          fontSize: 20,
+        }}
+      >
         Page {page} of {totalPages}
       </Typography>
       <Link href={`/posts/${page + 1}`} passHref>

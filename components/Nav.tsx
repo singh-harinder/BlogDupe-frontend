@@ -157,7 +157,7 @@ export default function Nav() {
           <AppBar position="fixed">
             <Toolbar>
               <Typography
-                variant="h2"
+                variant="h4"
                 noWrap
                 sx={{
                   flexGrow: 1,
