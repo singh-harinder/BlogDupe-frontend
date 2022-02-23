@@ -1,0 +1,10 @@
+mutation updatePost($id: ID!, $title: String, $description: String) {
+  updatePost(id: $id, data: { title: $title, description: $description }) {
+    id
+    title
+    description
+    author {
+      name
+    }
+  }
+}

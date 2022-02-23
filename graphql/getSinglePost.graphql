@@ -1,0 +1,17 @@
+query getSinglePost($id: ID!) {
+  Post(where: { id: $id }) {
+    author {
+      name
+      id
+      email
+      image {
+        image {
+          publicUrlTransformed
+        }
+      }
+    }
+    id
+    title
+    description
+  }
+}

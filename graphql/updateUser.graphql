@@ -1,0 +1,26 @@
+mutation updateUser(
+  $id: ID!
+  $name: String
+  $email: String
+  $location: String
+  $skills: String
+  $hobbies: String
+) {
+  updateUser(
+    id: $id
+    data: {
+      name: $name
+      email: $email
+      location: $location
+      skills: $skills
+      hobbies: $hobbies
+    }
+  ) {
+    id
+    name
+    email
+    location
+    skills
+    hobbies
+  }
+}

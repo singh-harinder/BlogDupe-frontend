@@ -1,0 +1,10 @@
+mutation updateUserProfilePicture($id: ID!, $image: Upload) {
+  updateUser(id: $id, data: { image: { create: { image: $image } } }) {
+    id
+    image {
+      image {
+        publicUrlTransformed
+      }
+    }
+  }
+}

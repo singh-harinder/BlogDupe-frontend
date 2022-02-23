@@ -1,0 +1,20 @@
+query singleUser($id: ID!) {
+  User(where: { id: $id }) {
+    id
+    name
+    email
+    location
+    skills
+    hobbies
+    posts {
+      id
+      title
+      description
+    }
+    image {
+      image {
+        publicUrlTransformed
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+query User {
+  authenticatedItem {
+    ... on User {
+      id
+      name
+      email
+      location
+      skills
+      hobbies
+      posts {
+        id
+        title
+        description
+      }
+      image {
+        altText
+        image {
+          publicUrlTransformed
+        }
+      }
+    }
+  }
+}

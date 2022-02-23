@@ -1,0 +1,17 @@
+query allPosts($skip: Int = 0, $first: Int) {
+  allPosts(skip: $skip, first: $first) {
+    id
+    title
+    description
+    author {
+      id
+      name
+      email
+      image {
+        image {
+          publicUrlTransformed
+        }
+      }
+    }
+  }
+}

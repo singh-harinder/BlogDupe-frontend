@@ -1,0 +1,5 @@
+query _allPostsMeta {
+  _allPostsMeta {
+    count
+  }
+}
