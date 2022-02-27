@@ -104,20 +104,20 @@ export default function SignIn() {
         >
           Sign In
         </Button>
-        <div>
-          <Typography sx={{ marginLeft: 3, marginTop: 1, padding: 1 }}>
+        <Box sx={{ marginTop: 5, marginBottom: 5 }}>
+          <Typography sx={{ marginLeft: 1, marginTop: 1, padding: 1 }}>
             Don&apos;t have an account? Sign Up for one below
           </Typography>
           <Link href="/signup" passHref>
             <Button
               variant="contained"
               type="button"
-              sx={{ marginLeft: 4, marginTop: 1, padding: 1 }}
+              sx={{ marginLeft: 2, marginTop: 1, padding: 1 }}
             >
               Create an Account
             </Button>
           </Link>
-        </div>
+        </Box>
       </form>
     </Container>
   );

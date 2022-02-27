@@ -23,7 +23,7 @@ export default function PaginationComponent({ page }: { page: number }) {
           disabled={page <= 1}
           sx={{
             '&[disabled]': {
-              color: 'grey',
+              color: '#696969',
               pointerEvents: 'none',
               '&:hover': {
                 textDecoration: 'none',
@@ -50,7 +50,7 @@ export default function PaginationComponent({ page }: { page: number }) {
           disabled={page >= totalPages}
           sx={{
             '&[disabled]': {
-              color: 'grey',
+              color: '#696969',
               pointerEvents: 'none',
               '&:hover': {
                 textDecoration: 'none',

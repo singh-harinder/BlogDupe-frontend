@@ -31,7 +31,7 @@ export default function CreatePost() {
   return (
     <Container>
       <Head>
-        <title>PlaceHolder | Create a Post</title>
+        <title>BlogDupe | Create a Post</title>
       </Head>
       <form
         onSubmit={async (event: FormEvent<HTMLFormElement>) => {

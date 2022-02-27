@@ -62,7 +62,7 @@ export default function UpdatePost({ id }: { id: string }) {
   return (
     <Container>
       <Head>
-        <title>PlaceHolder | Update Post</title>
+        <title>BlogDupe | Update Post</title>
       </Head>
       <form
         onSubmit={async (event: FormEvent<HTMLFormElement>) => {

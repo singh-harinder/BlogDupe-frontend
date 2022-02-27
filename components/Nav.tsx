@@ -79,7 +79,7 @@ export default function Nav() {
                 },
               }}
             >
-              <Link href="/">Placeholder</Link>
+              <Link href="/">BlogDupe</Link>
             </Typography>
             {!user.data?.authenticatedItem && (
               <Typography
@@ -170,7 +170,7 @@ export default function Nav() {
                 component="div"
                 onClick={handleDrawerClose}
               >
-                <Link href="/">Placeholder</Link>
+                <Link href="/">BlogDupe</Link>
               </Typography>
               <IconButton
                 color="inherit"

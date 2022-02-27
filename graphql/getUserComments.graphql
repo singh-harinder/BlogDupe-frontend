@@ -1,0 +1,10 @@
+query userComments {
+  authenticatedItem {
+    ... on User {
+      comments {
+        id
+        comment
+      }
+    }
+  }
+}

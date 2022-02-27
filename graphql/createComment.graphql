@@ -1,0 +1,6 @@
+mutation createComment($comment: String!, $id: ID!) {
+  createComment(data: { comment: $comment, post: { connect: { id: $id } } }) {
+    id
+    comment
+  }
+}

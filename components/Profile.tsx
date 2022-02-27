@@ -22,10 +22,11 @@ import CardActionArea from '@mui/material/CardActionArea';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CircularProgress from '@mui/material/CircularProgress';
 import Head from 'next/head';
+import CustomDialog from './CustomDialog';
 
-function update(cache: any, payload: any) {
-  cache.evict(cache.identify(payload.data.deletePost));
-}
+// function update(cache: any, payload: any) {
+//   cache.evict(cache.identify(payload.data.deletePost));
+// }
 
 export default function Profile({ id }: { id: string }) {
   const {
@@ -44,10 +45,10 @@ export default function Profile({ id }: { id: string }) {
     },
   });
 
-  const [deletePost, { loading: deleteLoading, error: deleteError }] =
-    useDeletePostMutation({
-      update,
-    });
+  // const [deletePost, { loading: deleteLoading, error: deleteError }] =
+  //   useDeletePostMutation({
+  //     update,
+  //   });
 
   if (signedInUserLoading) return <CircularProgress />;
 
@@ -61,16 +62,16 @@ export default function Profile({ id }: { id: string }) {
     return <Alert severity="error">Error: {profileError.message}</Alert>;
   }
 
-  if (deleteLoading) return <CircularProgress />;
+  // if (deleteLoading) return <CircularProgress />;
 
-  if (deleteError) {
-    return <Alert severity="error">Error: {deleteError.message}</Alert>;
-  }
+  // if (deleteError) {
+  //   return <Alert severity="error">Error: {deleteError.message}</Alert>;
+  // }
 
   return (
     <Container>
       <Head>
-        <title>PlaceHolder | Profile</title>
+        <title>BlogDupe | Profile</title>
       </Head>
       <Card>
         <CardHeader
@@ -161,25 +162,27 @@ export default function Profile({ id }: { id: string }) {
                     <CardActions>
                       {signedInUserData?.authenticatedItem?.id ===
                         profileData.User?.id && (
-                        <Button
-                          size="small"
-                          sx={{ float: 'left' }}
-                          onClick={async () => {
-                            if (
-                              window.confirm(
-                                'Are you sure you want to delete this post'
-                              )
-                            ) {
-                              await deletePost({
-                                variables: {
-                                  id: post.id,
-                                },
-                              });
-                            }
-                          }}
-                        >
-                          <DeleteIcon />
-                        </Button>
+                        // <Button
+                        //   size="small"
+                        //   sx={{ float: 'left' }}
+                        //   // onClick={async () => {
+                        //   //   if (
+                        //   //     window.confirm(
+                        //   //       'Are you sure you want to delete this post'
+                        //   //     )
+                        //   //   ) {
+                        //   //     await deletePost({
+                        //   //       variables: {
+                        //   //         id: post.id,
+                        //   //       },
+                        //   //     });
+                        //   //   }
+                        //   // }}
+                        //   onClick={handleClick}
+                        // >
+                        //   <DeleteIcon />
+                        // </Button>
+                        <CustomDialog id={post.id} />
                       )}
                     </CardActions>
                   </Card>

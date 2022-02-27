@@ -86,6 +86,78 @@ export type CloudinaryImage_FilePublicUrlTransformedArgs = {
   transformation?: InputMaybe<CloudinaryImageFormat>;
 };
 
+/**  A keystone list  */
+export type Comment = {
+  __typename?: "Comment";
+  comment?: Maybe<Scalars["String"]>;
+  id: Scalars["ID"];
+  post?: Maybe<Post>;
+  user?: Maybe<User>;
+};
+
+export type CommentCreateInput = {
+  comment?: InputMaybe<Scalars["String"]>;
+  post?: InputMaybe<PostRelateToOneInput>;
+  user?: InputMaybe<UserRelateToOneInput>;
+};
+
+export type CommentRelateToManyInput = {
+  connect?: InputMaybe<Array<InputMaybe<CommentWhereUniqueInput>>>;
+  create?: InputMaybe<Array<InputMaybe<CommentCreateInput>>>;
+  disconnect?: InputMaybe<Array<InputMaybe<CommentWhereUniqueInput>>>;
+  disconnectAll?: InputMaybe<Scalars["Boolean"]>;
+};
+
+export type CommentUpdateInput = {
+  comment?: InputMaybe<Scalars["String"]>;
+  post?: InputMaybe<PostRelateToOneInput>;
+  user?: InputMaybe<UserRelateToOneInput>;
+};
+
+export type CommentWhereInput = {
+  AND?: InputMaybe<Array<InputMaybe<CommentWhereInput>>>;
+  OR?: InputMaybe<Array<InputMaybe<CommentWhereInput>>>;
+  comment?: InputMaybe<Scalars["String"]>;
+  comment_contains?: InputMaybe<Scalars["String"]>;
+  comment_contains_i?: InputMaybe<Scalars["String"]>;
+  comment_ends_with?: InputMaybe<Scalars["String"]>;
+  comment_ends_with_i?: InputMaybe<Scalars["String"]>;
+  comment_i?: InputMaybe<Scalars["String"]>;
+  comment_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+  comment_not?: InputMaybe<Scalars["String"]>;
+  comment_not_contains?: InputMaybe<Scalars["String"]>;
+  comment_not_contains_i?: InputMaybe<Scalars["String"]>;
+  comment_not_ends_with?: InputMaybe<Scalars["String"]>;
+  comment_not_ends_with_i?: InputMaybe<Scalars["String"]>;
+  comment_not_i?: InputMaybe<Scalars["String"]>;
+  comment_not_in?: InputMaybe<Array<InputMaybe<Scalars["String"]>>>;
+  comment_not_starts_with?: InputMaybe<Scalars["String"]>;
+  comment_not_starts_with_i?: InputMaybe<Scalars["String"]>;
+  comment_starts_with?: InputMaybe<Scalars["String"]>;
+  comment_starts_with_i?: InputMaybe<Scalars["String"]>;
+  id?: InputMaybe<Scalars["ID"]>;
+  id_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  id_not?: InputMaybe<Scalars["ID"]>;
+  id_not_in?: InputMaybe<Array<InputMaybe<Scalars["ID"]>>>;
+  post?: InputMaybe<PostWhereInput>;
+  post_is_null?: InputMaybe<Scalars["Boolean"]>;
+  user?: InputMaybe<UserWhereInput>;
+  user_is_null?: InputMaybe<Scalars["Boolean"]>;
+};
+
+export type CommentWhereUniqueInput = {
+  id: Scalars["ID"];
+};
+
+export type CommentsCreateInput = {
+  data?: InputMaybe<CommentCreateInput>;
+};
+
+export type CommentsUpdateInput = {
+  data?: InputMaybe<CommentUpdateInput>;
+  id: Scalars["ID"];
+};
+
 export type CreateInitialUserInput = {
   email?: InputMaybe<Scalars["String"]>;
   name?: InputMaybe<Scalars["String"]>;
@@ -191,6 +263,10 @@ export type KeystoneMeta = {
 export type Mutation = {
   __typename?: "Mutation";
   authenticateUserWithPassword: UserAuthenticationWithPasswordResult;
+  /**  Create a single Comment item.  */
+  createComment?: Maybe<Comment>;
+  /**  Create multiple Comment items.  */
+  createComments?: Maybe<Array<Maybe<Comment>>>;
   createInitialUser: UserAuthenticationWithPasswordSuccess;
   /**  Create a single Post item.  */
   createPost?: Maybe<Post>;
@@ -204,6 +280,10 @@ export type Mutation = {
   createUser?: Maybe<User>;
   /**  Create multiple User items.  */
   createUsers?: Maybe<Array<Maybe<User>>>;
+  /**  Delete a single Comment item by ID.  */
+  deleteComment?: Maybe<Comment>;
+  /**  Delete multiple Comment items by ID.  */
+  deleteComments?: Maybe<Array<Maybe<Comment>>>;
   /**  Delete a single Post item by ID.  */
   deletePost?: Maybe<Post>;
   /**  Delete multiple Post items by ID.  */
@@ -217,6 +297,10 @@ export type Mutation = {
   /**  Delete multiple User items by ID.  */
   deleteUsers?: Maybe<Array<Maybe<User>>>;
   endSession: Scalars["Boolean"];
+  /**  Update a single Comment item by ID.  */
+  updateComment?: Maybe<Comment>;
+  /**  Update multiple Comment items by ID.  */
+  updateComments?: Maybe<Array<Maybe<Comment>>>;
   /**  Update a single Post item by ID.  */
   updatePost?: Maybe<Post>;
   /**  Update multiple Post items by ID.  */
@@ -234,6 +318,14 @@ export type Mutation = {
 export type MutationAuthenticateUserWithPasswordArgs = {
   email: Scalars["String"];
   password: Scalars["String"];
+};
+
+export type MutationCreateCommentArgs = {
+  data?: InputMaybe<CommentCreateInput>;
+};
+
+export type MutationCreateCommentsArgs = {
+  data?: InputMaybe<Array<InputMaybe<CommentsCreateInput>>>;
 };
 
 export type MutationCreateInitialUserArgs = {
@@ -264,6 +356,14 @@ export type MutationCreateUsersArgs = {
   data?: InputMaybe<Array<InputMaybe<UsersCreateInput>>>;
 };
 
+export type MutationDeleteCommentArgs = {
+  id: Scalars["ID"];
+};
+
+export type MutationDeleteCommentsArgs = {
+  ids?: InputMaybe<Array<Scalars["ID"]>>;
+};
+
 export type MutationDeletePostArgs = {
   id: Scalars["ID"];
 };
@@ -286,6 +386,15 @@ export type MutationDeleteUserArgs = {
 
 export type MutationDeleteUsersArgs = {
   ids?: InputMaybe<Array<Scalars["ID"]>>;
+};
+
+export type MutationUpdateCommentArgs = {
+  data?: InputMaybe<CommentUpdateInput>;
+  id: Scalars["ID"];
+};
+
+export type MutationUpdateCommentsArgs = {
+  data?: InputMaybe<Array<InputMaybe<CommentsUpdateInput>>>;
 };
 
 export type MutationUpdatePostArgs = {
@@ -326,14 +435,37 @@ export enum PasswordAuthErrorCode {
 /**  A keystone list  */
 export type Post = {
   __typename?: "Post";
+  _commentsMeta?: Maybe<_QueryMeta>;
   author?: Maybe<User>;
+  comments: Array<Comment>;
   description?: Maybe<Scalars["String"]>;
   id: Scalars["ID"];
   title?: Maybe<Scalars["String"]>;
 };
 
+/**  A keystone list  */
+export type Post_CommentsMetaArgs = {
+  first?: InputMaybe<Scalars["Int"]>;
+  orderBy?: InputMaybe<Scalars["String"]>;
+  search?: InputMaybe<Scalars["String"]>;
+  skip?: InputMaybe<Scalars["Int"]>;
+  sortBy?: InputMaybe<Array<SortCommentsBy>>;
+  where?: InputMaybe<CommentWhereInput>;
+};
+
+/**  A keystone list  */
+export type PostCommentsArgs = {
+  first?: InputMaybe<Scalars["Int"]>;
+  orderBy?: InputMaybe<Scalars["String"]>;
+  search?: InputMaybe<Scalars["String"]>;
+  skip?: InputMaybe<Scalars["Int"]>;
+  sortBy?: InputMaybe<Array<SortCommentsBy>>;
+  where?: InputMaybe<CommentWhereInput>;
+};
+
 export type PostCreateInput = {
   author?: InputMaybe<UserRelateToOneInput>;
+  comments?: InputMaybe<CommentRelateToManyInput>;
   description?: InputMaybe<Scalars["String"]>;
   title?: InputMaybe<Scalars["String"]>;
 };
@@ -345,8 +477,16 @@ export type PostRelateToManyInput = {
   disconnectAll?: InputMaybe<Scalars["Boolean"]>;
 };
 
+export type PostRelateToOneInput = {
+  connect?: InputMaybe<PostWhereUniqueInput>;
+  create?: InputMaybe<PostCreateInput>;
+  disconnect?: InputMaybe<PostWhereUniqueInput>;
+  disconnectAll?: InputMaybe<Scalars["Boolean"]>;
+};
+
 export type PostUpdateInput = {
   author?: InputMaybe<UserRelateToOneInput>;
+  comments?: InputMaybe<CommentRelateToManyInput>;
   description?: InputMaybe<Scalars["String"]>;
   title?: InputMaybe<Scalars["String"]>;
 };
@@ -356,6 +496,12 @@ export type PostWhereInput = {
   OR?: InputMaybe<Array<InputMaybe<PostWhereInput>>>;
   author?: InputMaybe<UserWhereInput>;
   author_is_null?: InputMaybe<Scalars["Boolean"]>;
+  /**  condition must be true for all nodes  */
+  comments_every?: InputMaybe<CommentWhereInput>;
+  /**  condition must be false for all nodes  */
+  comments_none?: InputMaybe<CommentWhereInput>;
+  /**  condition must be true for at least 1 node  */
+  comments_some?: InputMaybe<CommentWhereInput>;
   description?: InputMaybe<Scalars["String"]>;
   description_contains?: InputMaybe<Scalars["String"]>;
   description_contains_i?: InputMaybe<Scalars["String"]>;
@@ -487,18 +633,24 @@ export type ProfileImagesUpdateInput = {
 
 export type Query = {
   __typename?: "Query";
+  /**  Search for the Comment item with the matching ID.  */
+  Comment?: Maybe<Comment>;
   /**  Search for the Post item with the matching ID.  */
   Post?: Maybe<Post>;
   /**  Search for the ProfileImage item with the matching ID.  */
   ProfileImage?: Maybe<ProfileImage>;
   /**  Search for the User item with the matching ID.  */
   User?: Maybe<User>;
+  /**  Retrieve the meta-data for the Comment list.  */
+  _CommentsMeta?: Maybe<_ListMeta>;
   /**  Retrieve the meta-data for the Post list.  */
   _PostsMeta?: Maybe<_ListMeta>;
   /**  Retrieve the meta-data for the ProfileImage list.  */
   _ProfileImagesMeta?: Maybe<_ListMeta>;
   /**  Retrieve the meta-data for the User list.  */
   _UsersMeta?: Maybe<_ListMeta>;
+  /**  Perform a meta-query on all Comment items which match the where clause.  */
+  _allCommentsMeta?: Maybe<_QueryMeta>;
   /**  Perform a meta-query on all Post items which match the where clause.  */
   _allPostsMeta?: Maybe<_QueryMeta>;
   /**  Perform a meta-query on all ProfileImage items which match the where clause.  */
@@ -507,6 +659,8 @@ export type Query = {
   _allUsersMeta?: Maybe<_QueryMeta>;
   /**  Retrieve the meta-data for all lists.  */
   _ksListsMeta?: Maybe<Array<Maybe<_ListMeta>>>;
+  /**  Search for all Comment items which match the where clause.  */
+  allComments?: Maybe<Array<Maybe<Comment>>>;
   /**  Search for all Post items which match the where clause.  */
   allPosts?: Maybe<Array<Maybe<Post>>>;
   /**  Search for all ProfileImage items which match the where clause.  */
@@ -519,6 +673,10 @@ export type Query = {
   keystone: KeystoneMeta;
 };
 
+export type QueryCommentArgs = {
+  where: CommentWhereUniqueInput;
+};
+
 export type QueryPostArgs = {
   where: PostWhereUniqueInput;
 };
@@ -529,6 +687,15 @@ export type QueryProfileImageArgs = {
 
 export type QueryUserArgs = {
   where: UserWhereUniqueInput;
+};
+
+export type Query_AllCommentsMetaArgs = {
+  first?: InputMaybe<Scalars["Int"]>;
+  orderBy?: InputMaybe<Scalars["String"]>;
+  search?: InputMaybe<Scalars["String"]>;
+  skip?: InputMaybe<Scalars["Int"]>;
+  sortBy?: InputMaybe<Array<SortCommentsBy>>;
+  where?: InputMaybe<CommentWhereInput>;
 };
 
 export type Query_AllPostsMetaArgs = {
@@ -562,6 +729,15 @@ export type Query_KsListsMetaArgs = {
   where?: InputMaybe<_KsListsMetaInput>;
 };
 
+export type QueryAllCommentsArgs = {
+  first?: InputMaybe<Scalars["Int"]>;
+  orderBy?: InputMaybe<Scalars["String"]>;
+  search?: InputMaybe<Scalars["String"]>;
+  skip?: InputMaybe<Scalars["Int"]>;
+  sortBy?: InputMaybe<Array<SortCommentsBy>>;
+  where?: InputMaybe<CommentWhereInput>;
+};
+
 export type QueryAllPostsArgs = {
   first?: InputMaybe<Scalars["Int"]>;
   orderBy?: InputMaybe<Scalars["String"]>;
@@ -589,9 +765,22 @@ export type QueryAllUsersArgs = {
   where?: InputMaybe<UserWhereInput>;
 };
 
+export enum SortCommentsBy {
+  CommentAsc = "comment_ASC",
+  CommentDesc = "comment_DESC",
+  IdAsc = "id_ASC",
+  IdDesc = "id_DESC",
+  PostAsc = "post_ASC",
+  PostDesc = "post_DESC",
+  UserAsc = "user_ASC",
+  UserDesc = "user_DESC",
+}
+
 export enum SortPostsBy {
   AuthorAsc = "author_ASC",
   AuthorDesc = "author_DESC",
+  CommentsAsc = "comments_ASC",
+  CommentsDesc = "comments_DESC",
   DescriptionAsc = "description_ASC",
   DescriptionDesc = "description_DESC",
   IdAsc = "id_ASC",
@@ -610,6 +799,8 @@ export enum SortProfileImagesBy {
 }
 
 export enum SortUsersBy {
+  CommentsAsc = "comments_ASC",
+  CommentsDesc = "comments_DESC",
   EmailAsc = "email_ASC",
   EmailDesc = "email_DESC",
   HobbiesAsc = "hobbies_ASC",
@@ -639,7 +830,9 @@ export enum SortUsersBy {
 /**  A keystone list  */
 export type User = {
   __typename?: "User";
+  _commentsMeta?: Maybe<_QueryMeta>;
   _postsMeta?: Maybe<_QueryMeta>;
+  comments: Array<Comment>;
   email?: Maybe<Scalars["String"]>;
   hobbies?: Maybe<Scalars["String"]>;
   id: Scalars["ID"];
@@ -658,6 +851,16 @@ export type User = {
 };
 
 /**  A keystone list  */
+export type User_CommentsMetaArgs = {
+  first?: InputMaybe<Scalars["Int"]>;
+  orderBy?: InputMaybe<Scalars["String"]>;
+  search?: InputMaybe<Scalars["String"]>;
+  skip?: InputMaybe<Scalars["Int"]>;
+  sortBy?: InputMaybe<Array<SortCommentsBy>>;
+  where?: InputMaybe<CommentWhereInput>;
+};
+
+/**  A keystone list  */
 export type User_PostsMetaArgs = {
   first?: InputMaybe<Scalars["Int"]>;
   orderBy?: InputMaybe<Scalars["String"]>;
@@ -665,6 +868,16 @@ export type User_PostsMetaArgs = {
   skip?: InputMaybe<Scalars["Int"]>;
   sortBy?: InputMaybe<Array<SortPostsBy>>;
   where?: InputMaybe<PostWhereInput>;
+};
+
+/**  A keystone list  */
+export type UserCommentsArgs = {
+  first?: InputMaybe<Scalars["Int"]>;
+  orderBy?: InputMaybe<Scalars["String"]>;
+  search?: InputMaybe<Scalars["String"]>;
+  skip?: InputMaybe<Scalars["Int"]>;
+  sortBy?: InputMaybe<Array<SortCommentsBy>>;
+  where?: InputMaybe<CommentWhereInput>;
 };
 
 /**  A keystone list  */
@@ -694,6 +907,7 @@ export type UserAuthenticationWithPasswordSuccess = {
 };
 
 export type UserCreateInput = {
+  comments?: InputMaybe<CommentRelateToManyInput>;
   email?: InputMaybe<Scalars["String"]>;
   hobbies?: InputMaybe<Scalars["String"]>;
   image?: InputMaybe<ProfileImageRelateToOneInput>;
@@ -718,6 +932,7 @@ export type UserRelateToOneInput = {
 };
 
 export type UserUpdateInput = {
+  comments?: InputMaybe<CommentRelateToManyInput>;
   email?: InputMaybe<Scalars["String"]>;
   hobbies?: InputMaybe<Scalars["String"]>;
   image?: InputMaybe<ProfileImageRelateToOneInput>;
@@ -737,6 +952,12 @@ export type UserUpdateInput = {
 export type UserWhereInput = {
   AND?: InputMaybe<Array<InputMaybe<UserWhereInput>>>;
   OR?: InputMaybe<Array<InputMaybe<UserWhereInput>>>;
+  /**  condition must be true for all nodes  */
+  comments_every?: InputMaybe<CommentWhereInput>;
+  /**  condition must be false for all nodes  */
+  comments_none?: InputMaybe<CommentWhereInput>;
+  /**  condition must be true for at least 1 node  */
+  comments_some?: InputMaybe<CommentWhereInput>;
   email?: InputMaybe<Scalars["String"]>;
   email_contains?: InputMaybe<Scalars["String"]>;
   email_contains_i?: InputMaybe<Scalars["String"]>;
@@ -1054,6 +1275,20 @@ export type _KsListsMetaInput = {
   key?: InputMaybe<Scalars["String"]>;
 };
 
+export type CreateCommentMutationVariables = Exact<{
+  comment: Scalars["String"];
+  id: Scalars["ID"];
+}>;
+
+export type CreateCommentMutation = {
+  __typename?: "Mutation";
+  createComment?: {
+    __typename?: "Comment";
+    id: string;
+    comment?: string | null;
+  } | null;
+};
+
 export type CreatePostMutationVariables = Exact<{
   title: Scalars["String"];
   description: Scalars["String"];
@@ -1068,6 +1303,15 @@ export type CreatePostMutation = {
     description?: string | null;
     author?: { __typename?: "User"; name?: string | null } | null;
   } | null;
+};
+
+export type DeleteCommentMutationVariables = Exact<{
+  id: Scalars["ID"];
+}>;
+
+export type DeleteCommentMutation = {
+  __typename?: "Mutation";
+  deleteComment?: { __typename?: "Comment"; id: string } | null;
 };
 
 export type DeletePostMutationVariables = Exact<{
@@ -1114,6 +1358,18 @@ export type _AllPostsMetaQuery = {
   _allPostsMeta?: { __typename?: "_QueryMeta"; count?: number | null } | null;
 };
 
+export type GetNumberOfCommentsOnPostQueryVariables = Exact<{
+  id: Scalars["ID"];
+}>;
+
+export type GetNumberOfCommentsOnPostQuery = {
+  __typename?: "Query";
+  _allCommentsMeta?: {
+    __typename?: "_QueryMeta";
+    count?: number | null;
+  } | null;
+};
+
 export type GetSinglePostQueryVariables = Exact<{
   id: Scalars["ID"];
 }>;
@@ -1138,6 +1394,23 @@ export type GetSinglePostQuery = {
         } | null;
       } | null;
     } | null;
+    comments: Array<{
+      __typename?: "Comment";
+      id: string;
+      comment?: string | null;
+      user?: {
+        __typename?: "User";
+        id: string;
+        name?: string | null;
+        image?: {
+          __typename?: "ProfileImage";
+          image?: {
+            __typename?: "CloudinaryImage_File";
+            publicUrlTransformed?: string | null;
+          } | null;
+        } | null;
+      } | null;
+    }>;
   } | null;
 };
 
@@ -1197,6 +1470,20 @@ export type UserQuery = {
         publicUrlTransformed?: string | null;
       } | null;
     } | null;
+  } | null;
+};
+
+export type UserCommentsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type UserCommentsQuery = {
+  __typename?: "Query";
+  authenticatedItem?: {
+    __typename?: "User";
+    comments: Array<{
+      __typename?: "Comment";
+      id: string;
+      comment?: string | null;
+    }>;
   } | null;
 };
 
@@ -1303,6 +1590,58 @@ export type UpdateUserProfilePictureMutation = {
   } | null;
 };
 
+export const CreateCommentDocument = gql`
+  mutation createComment($comment: String!, $id: ID!) {
+    createComment(data: { comment: $comment, post: { connect: { id: $id } } }) {
+      id
+      comment
+    }
+  }
+`;
+export type CreateCommentMutationFn = Apollo.MutationFunction<
+  CreateCommentMutation,
+  CreateCommentMutationVariables
+>;
+
+/**
+ * __useCreateCommentMutation__
+ *
+ * To run a mutation, you first call `useCreateCommentMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateCommentMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createCommentMutation, { data, loading, error }] = useCreateCommentMutation({
+ *   variables: {
+ *      comment: // value for 'comment'
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useCreateCommentMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    CreateCommentMutation,
+    CreateCommentMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    CreateCommentMutation,
+    CreateCommentMutationVariables
+  >(CreateCommentDocument, options);
+}
+export type CreateCommentMutationHookResult = ReturnType<
+  typeof useCreateCommentMutation
+>;
+export type CreateCommentMutationResult =
+  Apollo.MutationResult<CreateCommentMutation>;
+export type CreateCommentMutationOptions = Apollo.BaseMutationOptions<
+  CreateCommentMutation,
+  CreateCommentMutationVariables
+>;
 export const CreatePostDocument = gql`
   mutation createPost($title: String!, $description: String!) {
     createPost(data: { title: $title, description: $description }) {
@@ -1358,6 +1697,56 @@ export type CreatePostMutationResult =
 export type CreatePostMutationOptions = Apollo.BaseMutationOptions<
   CreatePostMutation,
   CreatePostMutationVariables
+>;
+export const DeleteCommentDocument = gql`
+  mutation deleteComment($id: ID!) {
+    deleteComment(id: $id) {
+      id
+    }
+  }
+`;
+export type DeleteCommentMutationFn = Apollo.MutationFunction<
+  DeleteCommentMutation,
+  DeleteCommentMutationVariables
+>;
+
+/**
+ * __useDeleteCommentMutation__
+ *
+ * To run a mutation, you first call `useDeleteCommentMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useDeleteCommentMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [deleteCommentMutation, { data, loading, error }] = useDeleteCommentMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useDeleteCommentMutation(
+  baseOptions?: Apollo.MutationHookOptions<
+    DeleteCommentMutation,
+    DeleteCommentMutationVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useMutation<
+    DeleteCommentMutation,
+    DeleteCommentMutationVariables
+  >(DeleteCommentDocument, options);
+}
+export type DeleteCommentMutationHookResult = ReturnType<
+  typeof useDeleteCommentMutation
+>;
+export type DeleteCommentMutationResult =
+  Apollo.MutationResult<DeleteCommentMutation>;
+export type DeleteCommentMutationOptions = Apollo.BaseMutationOptions<
+  DeleteCommentMutation,
+  DeleteCommentMutationVariables
 >;
 export const DeletePostDocument = gql`
   mutation deletePost($id: ID!) {
@@ -1540,6 +1929,69 @@ export function refetch_AllPostsMetaQuery(
 ) {
   return { query: _AllPostsMetaDocument, variables: variables };
 }
+export const GetNumberOfCommentsOnPostDocument = gql`
+  query getNumberOfCommentsOnPost($id: ID!) {
+    _allCommentsMeta(where: { post: { id: $id } }) {
+      count
+    }
+  }
+`;
+
+/**
+ * __useGetNumberOfCommentsOnPostQuery__
+ *
+ * To run a query within a React component, call `useGetNumberOfCommentsOnPostQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetNumberOfCommentsOnPostQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetNumberOfCommentsOnPostQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetNumberOfCommentsOnPostQuery(
+  baseOptions: Apollo.QueryHookOptions<
+    GetNumberOfCommentsOnPostQuery,
+    GetNumberOfCommentsOnPostQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<
+    GetNumberOfCommentsOnPostQuery,
+    GetNumberOfCommentsOnPostQueryVariables
+  >(GetNumberOfCommentsOnPostDocument, options);
+}
+export function useGetNumberOfCommentsOnPostLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetNumberOfCommentsOnPostQuery,
+    GetNumberOfCommentsOnPostQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<
+    GetNumberOfCommentsOnPostQuery,
+    GetNumberOfCommentsOnPostQueryVariables
+  >(GetNumberOfCommentsOnPostDocument, options);
+}
+export type GetNumberOfCommentsOnPostQueryHookResult = ReturnType<
+  typeof useGetNumberOfCommentsOnPostQuery
+>;
+export type GetNumberOfCommentsOnPostLazyQueryHookResult = ReturnType<
+  typeof useGetNumberOfCommentsOnPostLazyQuery
+>;
+export type GetNumberOfCommentsOnPostQueryResult = Apollo.QueryResult<
+  GetNumberOfCommentsOnPostQuery,
+  GetNumberOfCommentsOnPostQueryVariables
+>;
+export function refetchGetNumberOfCommentsOnPostQuery(
+  variables: GetNumberOfCommentsOnPostQueryVariables
+) {
+  return { query: GetNumberOfCommentsOnPostDocument, variables: variables };
+}
 export const GetSinglePostDocument = gql`
   query getSinglePost($id: ID!) {
     Post(where: { id: $id }) {
@@ -1556,6 +2008,19 @@ export const GetSinglePostDocument = gql`
       id
       title
       description
+      comments {
+        id
+        comment
+        user {
+          id
+          name
+          image {
+            image {
+              publicUrlTransformed
+            }
+          }
+        }
+      }
     }
   }
 `;
@@ -1750,6 +2215,73 @@ export type UserLazyQueryHookResult = ReturnType<typeof useUserLazyQuery>;
 export type UserQueryResult = Apollo.QueryResult<UserQuery, UserQueryVariables>;
 export function refetchUserQuery(variables?: UserQueryVariables) {
   return { query: UserDocument, variables: variables };
+}
+export const UserCommentsDocument = gql`
+  query userComments {
+    authenticatedItem {
+      ... on User {
+        comments {
+          id
+          comment
+        }
+      }
+    }
+  }
+`;
+
+/**
+ * __useUserCommentsQuery__
+ *
+ * To run a query within a React component, call `useUserCommentsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useUserCommentsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useUserCommentsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useUserCommentsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    UserCommentsQuery,
+    UserCommentsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<UserCommentsQuery, UserCommentsQueryVariables>(
+    UserCommentsDocument,
+    options
+  );
+}
+export function useUserCommentsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    UserCommentsQuery,
+    UserCommentsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<UserCommentsQuery, UserCommentsQueryVariables>(
+    UserCommentsDocument,
+    options
+  );
+}
+export type UserCommentsQueryHookResult = ReturnType<
+  typeof useUserCommentsQuery
+>;
+export type UserCommentsLazyQueryHookResult = ReturnType<
+  typeof useUserCommentsLazyQuery
+>;
+export type UserCommentsQueryResult = Apollo.QueryResult<
+  UserCommentsQuery,
+  UserCommentsQueryVariables
+>;
+export function refetchUserCommentsQuery(
+  variables?: UserCommentsQueryVariables
+) {
+  return { query: UserCommentsDocument, variables: variables };
 }
 export const SignInDocument = gql`
   mutation signIn($email: String!, $password: String!) {
@@ -2115,6 +2647,19 @@ export type CloudinaryImage_FileFieldPolicy = {
   publicUrl?: FieldPolicy<any> | FieldReadFunction<any>;
   publicUrlTransformed?: FieldPolicy<any> | FieldReadFunction<any>;
 };
+export type CommentKeySpecifier = (
+  | "comment"
+  | "id"
+  | "post"
+  | "user"
+  | CommentKeySpecifier
+)[];
+export type CommentFieldPolicy = {
+  comment?: FieldPolicy<any> | FieldReadFunction<any>;
+  id?: FieldPolicy<any> | FieldReadFunction<any>;
+  post?: FieldPolicy<any> | FieldReadFunction<any>;
+  user?: FieldPolicy<any> | FieldReadFunction<any>;
+};
 export type KeystoneAdminMetaKeySpecifier = (
   | "enableSessionItem"
   | "enableSignout"
@@ -2227,6 +2772,8 @@ export type KeystoneMetaFieldPolicy = {
 };
 export type MutationKeySpecifier = (
   | "authenticateUserWithPassword"
+  | "createComment"
+  | "createComments"
   | "createInitialUser"
   | "createPost"
   | "createPosts"
@@ -2234,6 +2781,8 @@ export type MutationKeySpecifier = (
   | "createProfileImages"
   | "createUser"
   | "createUsers"
+  | "deleteComment"
+  | "deleteComments"
   | "deletePost"
   | "deletePosts"
   | "deleteProfileImage"
@@ -2241,6 +2790,8 @@ export type MutationKeySpecifier = (
   | "deleteUser"
   | "deleteUsers"
   | "endSession"
+  | "updateComment"
+  | "updateComments"
   | "updatePost"
   | "updatePosts"
   | "updateProfileImage"
@@ -2251,6 +2802,8 @@ export type MutationKeySpecifier = (
 )[];
 export type MutationFieldPolicy = {
   authenticateUserWithPassword?: FieldPolicy<any> | FieldReadFunction<any>;
+  createComment?: FieldPolicy<any> | FieldReadFunction<any>;
+  createComments?: FieldPolicy<any> | FieldReadFunction<any>;
   createInitialUser?: FieldPolicy<any> | FieldReadFunction<any>;
   createPost?: FieldPolicy<any> | FieldReadFunction<any>;
   createPosts?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -2258,6 +2811,8 @@ export type MutationFieldPolicy = {
   createProfileImages?: FieldPolicy<any> | FieldReadFunction<any>;
   createUser?: FieldPolicy<any> | FieldReadFunction<any>;
   createUsers?: FieldPolicy<any> | FieldReadFunction<any>;
+  deleteComment?: FieldPolicy<any> | FieldReadFunction<any>;
+  deleteComments?: FieldPolicy<any> | FieldReadFunction<any>;
   deletePost?: FieldPolicy<any> | FieldReadFunction<any>;
   deletePosts?: FieldPolicy<any> | FieldReadFunction<any>;
   deleteProfileImage?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -2265,6 +2820,8 @@ export type MutationFieldPolicy = {
   deleteUser?: FieldPolicy<any> | FieldReadFunction<any>;
   deleteUsers?: FieldPolicy<any> | FieldReadFunction<any>;
   endSession?: FieldPolicy<any> | FieldReadFunction<any>;
+  updateComment?: FieldPolicy<any> | FieldReadFunction<any>;
+  updateComments?: FieldPolicy<any> | FieldReadFunction<any>;
   updatePost?: FieldPolicy<any> | FieldReadFunction<any>;
   updatePosts?: FieldPolicy<any> | FieldReadFunction<any>;
   updateProfileImage?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -2273,14 +2830,18 @@ export type MutationFieldPolicy = {
   updateUsers?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type PostKeySpecifier = (
+  | "_commentsMeta"
   | "author"
+  | "comments"
   | "description"
   | "id"
   | "title"
   | PostKeySpecifier
 )[];
 export type PostFieldPolicy = {
+  _commentsMeta?: FieldPolicy<any> | FieldReadFunction<any>;
   author?: FieldPolicy<any> | FieldReadFunction<any>;
+  comments?: FieldPolicy<any> | FieldReadFunction<any>;
   description?: FieldPolicy<any> | FieldReadFunction<any>;
   id?: FieldPolicy<any> | FieldReadFunction<any>;
   title?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -2299,16 +2860,20 @@ export type ProfileImageFieldPolicy = {
   photo?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type QueryKeySpecifier = (
+  | "Comment"
   | "Post"
   | "ProfileImage"
   | "User"
+  | "_CommentsMeta"
   | "_PostsMeta"
   | "_ProfileImagesMeta"
   | "_UsersMeta"
+  | "_allCommentsMeta"
   | "_allPostsMeta"
   | "_allProfileImagesMeta"
   | "_allUsersMeta"
   | "_ksListsMeta"
+  | "allComments"
   | "allPosts"
   | "allProfileImages"
   | "allUsers"
@@ -2318,16 +2883,20 @@ export type QueryKeySpecifier = (
   | QueryKeySpecifier
 )[];
 export type QueryFieldPolicy = {
+  Comment?: FieldPolicy<any> | FieldReadFunction<any>;
   Post?: FieldPolicy<any> | FieldReadFunction<any>;
   ProfileImage?: FieldPolicy<any> | FieldReadFunction<any>;
   User?: FieldPolicy<any> | FieldReadFunction<any>;
+  _CommentsMeta?: FieldPolicy<any> | FieldReadFunction<any>;
   _PostsMeta?: FieldPolicy<any> | FieldReadFunction<any>;
   _ProfileImagesMeta?: FieldPolicy<any> | FieldReadFunction<any>;
   _UsersMeta?: FieldPolicy<any> | FieldReadFunction<any>;
+  _allCommentsMeta?: FieldPolicy<any> | FieldReadFunction<any>;
   _allPostsMeta?: FieldPolicy<any> | FieldReadFunction<any>;
   _allProfileImagesMeta?: FieldPolicy<any> | FieldReadFunction<any>;
   _allUsersMeta?: FieldPolicy<any> | FieldReadFunction<any>;
   _ksListsMeta?: FieldPolicy<any> | FieldReadFunction<any>;
+  allComments?: FieldPolicy<any> | FieldReadFunction<any>;
   allPosts?: FieldPolicy<any> | FieldReadFunction<any>;
   allProfileImages?: FieldPolicy<any> | FieldReadFunction<any>;
   allUsers?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -2336,7 +2905,9 @@ export type QueryFieldPolicy = {
   keystone?: FieldPolicy<any> | FieldReadFunction<any>;
 };
 export type UserKeySpecifier = (
+  | "_commentsMeta"
   | "_postsMeta"
+  | "comments"
   | "email"
   | "hobbies"
   | "id"
@@ -2355,7 +2926,9 @@ export type UserKeySpecifier = (
   | UserKeySpecifier
 )[];
 export type UserFieldPolicy = {
+  _commentsMeta?: FieldPolicy<any> | FieldReadFunction<any>;
   _postsMeta?: FieldPolicy<any> | FieldReadFunction<any>;
+  comments?: FieldPolicy<any> | FieldReadFunction<any>;
   email?: FieldPolicy<any> | FieldReadFunction<any>;
   hobbies?: FieldPolicy<any> | FieldReadFunction<any>;
   id?: FieldPolicy<any> | FieldReadFunction<any>;
@@ -2521,6 +3094,13 @@ export type StrictTypedTypePolicies = {
       | CloudinaryImage_FileKeySpecifier
       | (() => undefined | CloudinaryImage_FileKeySpecifier);
     fields?: CloudinaryImage_FileFieldPolicy;
+  };
+  Comment?: Omit<TypePolicy, "fields" | "keyFields"> & {
+    keyFields?:
+      | false
+      | CommentKeySpecifier
+      | (() => undefined | CommentKeySpecifier);
+    fields?: CommentFieldPolicy;
   };
   KeystoneAdminMeta?: Omit<TypePolicy, "fields" | "keyFields"> & {
     keyFields?:

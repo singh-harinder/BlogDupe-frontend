@@ -1,0 +1,5 @@
+query getNumberOfCommentsOnPost($id: ID!) {
+  _allCommentsMeta(where: { post: { id: $id } }) {
+    count
+  }
+}

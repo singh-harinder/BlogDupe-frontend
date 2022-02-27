@@ -3,6 +3,7 @@ import { ChangeEvent, useEffect, useState } from 'react';
 type PostInputs = {
   title?: string;
   description?: string;
+  comment?: string;
 };
 
 type UserInputs = {

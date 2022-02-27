@@ -13,5 +13,18 @@ query getSinglePost($id: ID!) {
     id
     title
     description
+    comments {
+      id
+      comment
+      user {
+        id
+        name
+        image {
+          image {
+            publicUrlTransformed
+          }
+        }
+      }
+    }
   }
 }

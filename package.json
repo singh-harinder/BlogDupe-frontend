@@ -1,5 +1,5 @@
 {
-  "name": "typescript-todo",
+  "name": "blog-dupe-frontend",
   "private": true,
   "scripts": {
     "dev": "next dev -p 7777",

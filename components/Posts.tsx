@@ -22,7 +22,7 @@ export default function Posts({ page }: { page: number }) {
   return (
     <Box>
       <Head>
-        <title>Placeholder</title>
+        <title>BlogDupe</title>
       </Head>
       <Grid container spacing={5}>
         {data?.allPosts &&

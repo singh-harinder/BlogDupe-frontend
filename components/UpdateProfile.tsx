@@ -52,7 +52,7 @@ export default function UpdateProfile() {
   return (
     <Container>
       <Head>
-        <title>PlaceHolder | Update Profile</title>
+        <title>BlogDupe | Update Profile</title>
       </Head>
       <form onSubmit={handleSubmit}>
         <Typography variant="h4" color="primary">
