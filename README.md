@@ -1,6 +1,6 @@
 # A fullstack Blogging web app created using Nextjs, Apollo, Keystone, Graphql and Material UI
 
-url : <https://www.blogdupe.xyz>
+url : <https://blogdupe.xyz>
 
 ## Frontend is written using Nextjs in React typescript with Apollo for caching and the link between frontend and backend. Material UI is used to style the website.
 
