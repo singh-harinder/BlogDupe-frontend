@@ -118,6 +118,7 @@ export default function SignUp() {
         <Button
           sx={{ marginTop: 1, padding: 1 }}
           type="submit"
+          disabled={loading}
           variant="contained"
         >
           Create an Account
