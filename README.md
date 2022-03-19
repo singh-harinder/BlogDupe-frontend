@@ -1,6 +1,6 @@
 # A fullstack Blogging web app created using Nextjs, Apollo, Keystone, Graphql and Material UI
 
-url : <https://blogdupe.xyz>
+Appurl : <https://blogdupe.xyz>
 
 
 
@@ -11,7 +11,7 @@ url : <https://blogdupe.xyz>
 
 
 ### Backend is written in typescript and headless CMS Keystone is along with the MongoDB database. 
-
+backend: singh-harinder/BlogDupe-backend
 
 
 
