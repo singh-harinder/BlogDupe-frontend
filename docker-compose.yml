@@ -1,9 +1,9 @@
 version: '3'
 services:
-  blogdupe-backend:
+  blogdupe-frontend:
     build: .
     ports:
-      - "3000:3000"
+      - "7777:7777"
     volumes:
       - ./:/app
       - /app/node_modules
