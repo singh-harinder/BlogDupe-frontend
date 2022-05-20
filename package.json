@@ -2,9 +2,9 @@
   "name": "blog-dupe-frontend",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 7777",
+    "dev": "next dev -p 5000",
     "build": "next build",
-    "start": "next start -p 7777",
+    "start": "next build && next start -p 5000",
     "lint": "next lint",
     "codegen": "graphql-codegen --config codegen.yml -r dotenv/config"
   },
