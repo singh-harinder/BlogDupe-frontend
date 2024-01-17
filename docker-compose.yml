@@ -4,8 +4,6 @@ services:
     build: .
     ports:
       - "5000:5000"
-    volumes:
-      - ./:/app
-      - /app/node_modules
     environment:
       - NEXT_PUBLIC_PRODUCTION_ENDPOINT=${NEXT_PUBLIC_PRODUCTION_ENDPOINT}
+      - PORT=${PORT}
