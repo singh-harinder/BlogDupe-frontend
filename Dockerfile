@@ -23,7 +23,7 @@ FROM node:14-alpine3.14 as prod
 RUN mkdir /app && chown -R node:node /app
 WORKDIR /app
 ENV NODE_ENV=production
-ENV PORT=7777
+ENV PORT=5000
 COPY --chown=node:node package.json package-lock.json ./
 RUN npm ci --production && npm cache clean --force
 COPY --from=build /app/.next ./.next
